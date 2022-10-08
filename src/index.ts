@@ -376,3 +376,88 @@ const city_country = (city:string, country:string) => {
 console.log(city_country('Lahore', 'Pakistan'));
 console.log(city_country('Faislbad', 'Pakistan'));
 console.log(city_country('Karaci', 'Pakistan'));
+
+// Question 40 Album: Write a function called make_album() that builds a Object describing a music album. The function should take in an artist name and an album title, and it should return a Object containing these two pieces of information. Use the function to make three dictionaries representing different albums. Print each return value to show that Objects are storing the album information correctly. Add an optional parameter to make_album() that allows you to store the number of tracks on an album. If the calling line includes a value for the number of tracks, add that value to the album’s Object. Make at least one new function call that includes the number of tracks on an album.
+
+let artist_dic = [];
+const make_album = (name: string, title: string) => {
+  return new Object({
+    name: name,
+    title: title
+  })
+};
+artist_dic.push(make_album('John', 'PhotoGrapher'));
+artist_dic.push(make_album('Jorden', 'Artist'));
+artist_dic.push(make_album('Harry', 'Plumber'));
+
+console.log('Artist details: ',artist_dic);
+
+// Question 41 Magicians: Make a array of magician’s names. Pass the array to a function called show_magicians(), which prints the name of each magician in the array.
+
+const magiciansList = ['Erric', 'Jorden', 'Shamely', 'Harry', 'john'];
+
+const showMagicians = (magiciansList: string[]) => {
+  for(const name of magiciansList) {
+    console.log('Magicican Name: ',name);
+  }
+}
+
+showMagicians(magiciansList);
+
+// Question 42 Great Magicians: Start with a copy of your program from Exercise 39. Write a function called make_great() that modifies the array of magicians by adding the phrase the Great to each magician’s name. Call show_magicians() to see that the list has actually been modified.
+
+const make_great = (magiciansList: string[]) => {
+  magiciansList.forEach((name, index) => {
+    magiciansList[index] = 'Greate ' + name;
+  })
+  console.log(magiciansList);
+}
+
+make_great(magiciansList);
+
+// Question 43 Unchanged Magicians: Start with your work from Exercise 40. Call the function make_great() with a copy of the array of magicians’ names. Because the original array will be unchanged, return the new array and store it in a separate array. Call show_magicians() with each array to show that you have one array of the original names and one array with the Great added to each magician’s name.
+const show_artist = (artist_dic:any) => {
+  const newArry = artist_dic.map((obj: {name:string, title:string}) =>{
+    return obj.name.replace(/^/,'Great ');
+  })
+
+  console.log('Replace Name of Artists', newArry);
+  console.log('Without Replace: ', artist_dic);
+}
+
+show_artist(artist_dic);
+
+// Question 44 Sandwiches: Write a function that accepts a array of items a person wants on a sandwich. The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that is being ordered. Call the function three times, using a different number of arguments each time.
+
+const orders = (user:string[], ordername: string) => {
+  console.log('User list that orders: ',user, ' Order Name: ', ordername );
+}
+
+orders(['jorder', 'john', 'harry'], 'sandwich')
+orders(['jorder', 'john', 'harry'], 'Burger')
+
+orders(['jorder', 'john', 'harry'], 'Pizza')
+
+
+// Question 45 Cars: Write a function that stores information about a car in a Object. The function should always receive a manufacturer and a model name. It should then accept an arbitrary number of keyword arguments. Call the function with the required information and two other name-value pairs, such as a color or an optional feature. Print the Object that’s returned to make sure all the information was stored correctly.
+let carsArray:any = [];
+const car_details = (manufacturer: string, model: number , color:string = '') => {
+  if(color) {
+    carsArray.push({
+      manufacturer: manufacturer,
+      model:model,
+      color: color,
+    })
+  } else {
+    carsArray.push({
+      manufacturer: manufacturer,
+      model:model,
+    })
+  }
+}
+car_details('Audi', 2010);
+car_details('Honda', 2011, 'red');
+car_details('Toyota', 2018, 'white');
+
+console.log(carsArray);
+
